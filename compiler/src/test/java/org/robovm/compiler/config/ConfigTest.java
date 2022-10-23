@@ -26,6 +26,7 @@ import java.util.Arrays;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.custommonkey.xmlunit.XMLAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -111,6 +112,15 @@ public class ConfigTest {
         assertEquals(1, config.getArchs().size());
         assertEquals(Arch.x86, config.getArchs().get(0));
     }
+
+    public void assertXMLEqualsNonStrict(String xml1, String xml2) {
+        try {
+            XMLAssert.assertXMLEqual(xml1, xml2);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     
     @Test
     public void testWriteConsole() throws Exception {
@@ -138,7 +148,7 @@ public class ConfigTest {
         
         StringWriter out = new StringWriter();
         builder.write(out, wd);
-        assertEquals(IOUtils.toString(getClass().getResourceAsStream("ConfigTest.console.xml")), out.toString());
+        assertXMLEqualsNonStrict(IOUtils.toString(getClass().getResourceAsStream("ConfigTest.console.xml")), out.toString());
     }
 
     @Test
