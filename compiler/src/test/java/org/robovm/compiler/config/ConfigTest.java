@@ -111,6 +111,7 @@ public class ConfigTest {
         assertEquals(1, config.getArchs().size());
         assertEquals(Arch.x86, config.getArchs().get(0));
     }
+    
     @Test
     public void testWriteConsole() throws Exception {
         Config.Builder builder = new Config.Builder();
@@ -134,7 +135,6 @@ public class ConfigTest {
         builder.addForceLinkClass("javax.**.*");
         builder.os(OS.macosx);
         builder.archs(Arch.x86, Arch.x86_64);
-
         StringWriter out = new StringWriter();
         builder.write(out, wd);
         assertEquals(IOUtils.toString(getClass().getResourceAsStream("ConfigTest.console.xml")), out.toString());
