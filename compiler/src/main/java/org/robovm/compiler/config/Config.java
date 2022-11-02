@@ -93,7 +93,8 @@ import org.simpleframework.xml.stream.OutputNode;
  * Holds compiler configuration.
  */
 @Root
-@Order(elements = {"os", "arch", "forceLinkClasses", "libs", "frameworks", "resources", "classpath"})
+@Order(elements = {"os", "arch", "forceLinkClasses", "libs", "frameworks", "resources", "classpath", "target" ,"iosSdkVersion",
+        "iosInfoPList", "iosEntitlementsPList"})
 public class Config {
 
     /**
