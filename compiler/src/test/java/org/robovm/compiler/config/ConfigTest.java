@@ -135,7 +135,7 @@ public class ConfigTest {
         builder.addForceLinkClass("javax.**.*");
         builder.os(OS.macosx);
         builder.archs(Arch.x86, Arch.x86_64);
-
+    
         StringWriter out = new StringWriter();
         builder.write(out, wd);
         assertEquals(IOUtils.toString(getClass().getResourceAsStream("ConfigTest.console.xml")), out.toString());
