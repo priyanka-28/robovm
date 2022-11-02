@@ -79,10 +79,7 @@ import org.robovm.compiler.target.ios.SigningIdentity;
 import org.robovm.compiler.util.DigestUtil;
 import org.robovm.compiler.util.InfoPList;
 import org.robovm.compiler.util.io.RamDiskTools;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
-import org.simpleframework.xml.Root;
-import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.*;
 import org.simpleframework.xml.convert.Converter;
 import org.simpleframework.xml.convert.Registry;
 import org.simpleframework.xml.convert.RegistryStrategy;
@@ -96,6 +93,7 @@ import org.simpleframework.xml.stream.OutputNode;
  * Holds compiler configuration.
  */
 @Root
+@Order(elements = {"os", "arch", "forceLinkClasses", "libs", "frameworks", "resources", "classpath"})
 public class Config {
 
     /**
